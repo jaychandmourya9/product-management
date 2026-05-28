@@ -1,16 +1,96 @@
-# React + Vite
+# Product Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite application for product inventory management with authentication, Redux product CRUD, pagination, modal confirmation, and toast notifications.
 
-Currently, two official plugins are available:
+## Project overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This project includes:
 
-## React Compiler
+- React 19 + Vite frontend
+- `react-router-dom` v7 route protection
+- Redux Toolkit store for product CRUD operations
+- `react-hook-form` for form handling and validation
+- Axios-based service layer for DummyJSON API integration
+- Tailwind CSS styling with responsive layout
+- Authentication persistence via localStorage
+- Confirmation modal and toast feedback on product actions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Recommended environment
 
-## Expanding the ESLint configuration
+- Node.js: `>=18.0.0`
+- Recommended: `20.x` for best compatibility with Vite and current dependencies
+- Package manager: `npm` (or `pnpm` / `yarn` if preferred)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Use `nvm` (optional)
+
+```bash
+# Install and use Node 20 if you have nvm installed
+nvm install 20
+nvm use 20
+```
+
+## Getting started
+
+### Clone the repository
+
+```bash
+git clone <repository-url> "product-management"
+cd "product-management"
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start development server
+
+```bash
+npm run dev
+```
+
+Open the app in your browser at the local URL shown in the terminal, usually `http://localhost:5173`.
+
+## Available npm scripts
+
+- `npm run dev` — Start the Vite development server
+- `npm run build` — Build the production bundle
+- `npm run lint` — Run ESLint against the source files
+- `npm run preview` — Preview the production build locally
+
+## Project structure
+
+- `src/main.jsx` — App entry point and React render setup
+- `src/App.jsx` — Client routes and protected route wrapper
+- `src/pages` — UI pages for login, register, dashboard, and products
+- `src/store` — Redux Toolkit store and product slice
+- `src/services` — API helpers for auth and product CRUD
+- `src/components` — Reusable UI components such as `ConfirmDialog`
+
+## Authentication
+
+The app stores JWT and user details in `localStorage` under:
+
+- `pm_auth_token`
+- `pm_user`
+
+Use the login and registration pages to authenticate and access protected routes.
+
+## Notes
+
+- The app uses DummyJSON API endpoints for product and auth operations.
+- Product creation, update, and delete functionality is handled through the Redux store.
+- UI feedback is delivered via modal confirmations and toast messages.
+
+## Troubleshooting
+
+If the app does not start or you see dependency errors:
+
+```bash
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+If you need a specific Node version, use `nvm` or `nvm-windows`.
